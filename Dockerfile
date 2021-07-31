@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y rclone
 # Copy crontab files into container
 COPY crontab /etc/cron.d/crontab
 COPY backup.sh /backup.sh
+COPY entrypoint.sh /entrypoint.sh
 
 # Set up crontab
 RUN chmod 0644 /etc/cron.d/crontab && \
@@ -17,4 +18,5 @@ RUN chmod 0644 /etc/cron.d/crontab && \
 VOLUME /backups
 
 # Run cron as foreground task
-ENTRYPOINT ["cron", "-f"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["cron", "-f"]

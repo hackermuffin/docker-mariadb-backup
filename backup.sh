@@ -5,7 +5,7 @@ if [ $MYSQL_USER ] && [ $MYSQL_PASSWORD ] && [ $MYSQL_DATABASE ]
 then
     mysqldump --single-transaction -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE > /backups/nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 else
-    echo "Please set 'MYSQL_USER', 'MYSQL_PASSWORD' and 'MYSQL_DATABASE' variables to continue."
+    echo "Please set 'MYSQL_USER', 'MYSQL_PASSWORD' and 'MYSQL_DATABASE' variables to allow backups to run."
     exit
 fi
 
